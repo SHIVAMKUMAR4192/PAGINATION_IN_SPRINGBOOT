@@ -32,8 +32,8 @@ public class SearchController {
     }
 
    @PostMapping("/saveEmployeeDetails")
-    public List<Employee> saveEmployeeDetails(@RequestBody List<Employee> employeeList){
-        return employeeRepository.saveAll(employeeList);
+    public Employee saveEmployeeDetails(@RequestBody Employee employeeList){
+        return employeeRepository.save(employeeList);
     }
 
     @PostMapping("/saveDeptDetails")
@@ -41,9 +41,10 @@ public class SearchController {
         return deptRepository.saveAll(deptList);
     }
 
-    public ResponseEntity<?> findAllDetails(@RequestParam(value = "false")String companyName,
-                                            @RequestParam(value = "false")String employeeName,
-                                            @RequestParam(value = "false")String deptName){
+    @GetMapping("/getallDetails")
+    public ResponseEntity<?> findAllDetails(@RequestParam(required = false)String companyName,
+                                            @RequestParam(required = false)String employeeName,
+                                            @RequestParam(required = false)String deptName){
         if(companyName !=null){
             return new ResponseEntity<>(companyRepository.findByCompanyName(companyName), HttpStatus.OK);
 

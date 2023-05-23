@@ -13,13 +13,12 @@ import lombok.ToString;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private long employeeId;
+    private int employeeId;
     private String employeeName;
     private String email;
-    private int phnNumber;
+    private String phnNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     @JsonBackReference
     private Company company;

@@ -12,7 +12,6 @@ import lombok.ToString;
 public class Dept {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int deptId;
     private String deptName;
     private int noOfEmployeeInDept;
